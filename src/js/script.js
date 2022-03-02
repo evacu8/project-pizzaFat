@@ -33,6 +33,7 @@
     },
   };
 
+  // eslint-disable-next-line no-unused-vars
   const classNames = {
     menuProduct: {
       wrapperActive: 'active',
@@ -40,6 +41,7 @@
     },
   };
 
+  // eslint-disable-next-line no-unused-vars
   const settings = {
     amountWidget: {
       defaultValue: 1,
@@ -58,7 +60,7 @@
       thisProduct.id = id;
       thisProduct.data = data;
       thisProduct.renderInMenu();
-      console.log('new Product:', thisProduct);
+      thisProduct.initAccordion();
     }
     renderInMenu(){
       const thisProduct = this;
@@ -72,12 +74,33 @@
       /* add element to menu */
       menuContainer.appendChild(thisProduct.element);
     }
+    initAccordion(){
+      const thisProduct = this;
+  
+      /* find the clickable trigger (the element that should react to clicking) */
+      const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+      /* START: add event listener to clickable trigger on event click */
+      clickableTrigger.addEventListener('click', function(event) {
+        /* prevent default action for event */
+        event.preventDefault();
+        /* find active product (product that has active class) */
+        const activeProduct = document.querySelector('.product__header .active');
+        console.log(activeProduct);
+        /* if there is active product and it's not thisProduct.element, remove class active from it */
+        if (activeProduct && activeProduct !== thisProduct.element){
+          thisProduct.element.classList.remove('active');
+        }
+        /* toggle active class on thisProduct.element */
+        thisProduct.element.classList.toggle('active');
+      });
+  
+    }
   }
+  
 
   const app = {
     initMenu: function(){
       const thisApp = this;
-      console.log('thisApp.data:', thisApp.data);
       
       for (let productData in thisApp.data.products){
         new Product(productData, thisApp.data.products[productData]);
