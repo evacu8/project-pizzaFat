@@ -121,10 +121,45 @@
         thisProduct.processOrder();
       });
     }
-    processOrder(){
+    processOrder() {
       const thisProduct = this;
+    
+      // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
       const formData = utils.serializeFormToObject(thisProduct.form);
-      console.table(formData);
+      // console.table(formData);
+    
+      // set price to default price
+      let price = thisProduct.data.price;
+    
+      // for every category (param)...
+      for(let paramId in thisProduct.data.params) {
+        // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
+        const param = thisProduct.data.params[paramId];
+        // console.log(paramId, param);
+    
+        // for every option in this category
+        for(let optionId in param.options) {
+          // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
+          const option = param.options[optionId];
+          // console.log(optionId, option);
+          // check if paramId exists in formData
+          if(formData[paramId]) {
+            // console.log(optionId);
+          // if default option is not selected deduct it from the base price
+            if(option.default && !formData[paramId].includes(optionId)){
+              price -= option.price;
+            // if not default option is selected increase the base price
+            } else if (!option.default && formData[paramId].includes(optionId)){
+              price += option.price;
+            } else {
+              price == price;
+            }
+          }
+        }
+      }
+      // update calculated price in the HTML
+      thisProduct.priceElem.innerHTML = price;
+      console.log(price);
     }
   }
   
