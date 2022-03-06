@@ -33,7 +33,6 @@
     },
   };
 
-  // eslint-disable-next-line no-unused-vars
   const classNames = {
     menuProduct: {
       wrapperActive: 'active',
@@ -41,12 +40,11 @@
     },
   };
 
-  // eslint-disable-next-line no-unused-vars
   const settings = {
     amountWidget: {
       defaultValue: 1,
-      defaultMin: 1,
-      defaultMax: 9,
+      defaultMin: 0,
+      defaultMax: 10,
     }
   };
 
@@ -179,8 +177,8 @@
     constructor(element){
       const thisWidget = this;
 
-      console.log('AmountWidget:', thisWidget);
-      console.log('construcor arguments:', element);
+      // console.log('AmountWidget:', thisWidget);
+      // console.log('construcor arguments:', element);
 
       thisWidget.getElements(element);
       thisWidget.setValue(thisWidget.input.value);
@@ -201,8 +199,9 @@
       if(thisWidget.value !== newValue && !isNaN(newValue)){
 
         thisWidget.value = newValue;
-        thisWidget.input.value = thisWidget.value;
-      }
+      } 
+
+      thisWidget.input.value = thisWidget.value;
     }
     initActions(){
       const thisWidget = this;
@@ -213,12 +212,12 @@
 
       thisWidget.linkDecrease.addEventListener('click', function(event){
         event.preventDefault();
-        thisWidget.setValue(thisWidget.input.value --);
+        thisWidget.setValue(--thisWidget.input.value);
       });
 
       thisWidget.linkIncrease.addEventListener('click', function(event){
         event.preventDefault();
-        thisWidget.setValue(thisWidget.input.value ++);
+        thisWidget.setValue(++thisWidget.input.value);
       });
     }
   }
