@@ -90,7 +90,8 @@
       thisProduct.initOrderForm();
       thisProduct.initAmountWidget();
       thisProduct.processOrder();
-      this.prepareCartProduct();
+      thisProduct.prepareCartProduct();
+      thisProduct.prepareCartProductParams();
     }
     renderInMenu(){
       const thisProduct = this;
@@ -221,12 +222,41 @@
         amount: thisProduct.amountWidget.value,
         priceSingle: thisProduct.priceSingle,
         price: thisProduct.priceSingle * thisProduct.amountWidget.value,
-        params: {},
+        params: thisProduct.prepareCartProductParams(),
       };
       return productSummary;
     }
+
+    prepareCartProductParams(){
+      
+      const thisProduct = this;
+    
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      const params = {};
+      
+
+      for(let paramId in thisProduct.data.params) {
+      
+        const param = thisProduct.data.params[paramId];
+
+        params[paramId] = {
+          label: param.label,
+          options: {}
+        };
+
+        for(let optionId in param.options) {
+          
+          const option = param.options[optionId];
+
+          if (formData[paramId] && formData[paramId].includes(optionId)) {
+            params[paramId].options[optionId] = option.label;
+          }
+        }
+      }
+      // console.table(params);
+      return params;
+    }
   }
-  
   class AmountWidget{
     constructor(element){
       const thisWidget = this;
