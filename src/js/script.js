@@ -332,6 +332,7 @@
 
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = element.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.productList = element.querySelector(select.cart.productList);
     }
 
     initActions(){
@@ -343,9 +344,18 @@
     }
 
     add(menuProduct){
-      // const thisCart = this;
+      const thisCart = this;
 
       console.log('adding product', menuProduct);
+      console.log(thisCart.products);
+
+      const generatedHTML = templates.cartProduct(menuProduct);
+
+      thisCart.dom.product = utils.createDOMFromHTML(generatedHTML);
+
+      const generatedDOM = thisCart.dom.productList;
+
+      generatedDOM.appendChild(thisCart.dom.product);
     }
   }
 
