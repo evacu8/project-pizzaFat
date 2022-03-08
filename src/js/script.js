@@ -194,9 +194,10 @@
         }
       }
       // multiply the price by the amount
+      thisProduct.priceSingle = price;
       price*= thisProduct.amountWidget.value;
       // update calculated price in the HTML and object
-      thisProduct.priceSingle = price;
+      
       thisProduct.priceElem.innerHTML = price;
     }
     initAmountWidget(){
