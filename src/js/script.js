@@ -356,6 +356,10 @@
       thisCart.dom.productList.addEventListener('updated', function(){
         thisCart.update();
       });
+
+      thisCart.dom.productList.addEventListener('remove', function(event){
+        thisCart.remove(event.detail.cartProduct);
+      });
     }
 
     add(menuProduct){
@@ -387,7 +391,7 @@
         subtotalPrice += product.price;
       }
       // console.log('totalNumber', totalNumber, 'subtotalPrice', subtotalPrice);
-      
+
       if(totalNumber != 0){
         thisCart.totalPrice = subtotalPrice + deliveryFee;
       } else {
@@ -403,7 +407,15 @@
         // console.log('totalPriceElem', totalPriceElem);
         totalPriceElem.innerHTML = thisCart.totalPrice;
       }
+    }
 
+    remove(product){
+      const thisCart = this;
+
+      const productIndex = thisCart.products.indexOf(product);
+      thisCart.products.splice(productIndex, 1);
+
+      thisCart.update();
     }
   }
 
@@ -420,6 +432,7 @@
 
       thisCartProduct.getElements(element);
       thisCartProduct.initAmountWidget();
+      thisCartProduct.initActions();
 
       // console.log('thisCartProduct', thisCartProduct);
     }
@@ -444,6 +457,33 @@
         thisCartProduct.amount = thisCartProduct.amountWidget.value;
         thisCartProduct.price = thisCartProduct.amount * thisCartProduct.priceSingle;
         thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
+      });
+    }
+
+    remove(){
+      const thisCartProduct = this;
+
+      const event = new CustomEvent('remove', {
+        bubbles: true,
+        detail: {
+          cartProduct: thisCartProduct,
+        },
+      });
+
+      thisCartProduct.dom.wrapper.dispatchEvent(event);
+      thisCartProduct.dom.wrapper.remove();
+    }
+
+    initActions(){
+      const thisCartProduct = this;
+
+      thisCartProduct.dom.edit.addEventListener('click', function(event) {
+        event.preventDefault();
+      });
+
+      thisCartProduct.dom.remove.addEventListener('click', function(event) {
+        event.preventDefault();
+        thisCartProduct.remove();
       });
     }
   }
