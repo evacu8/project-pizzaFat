@@ -46,5 +46,8 @@
         "sass": "^1.44.0",
         "stylelint": "^14.5.3",
         "stylelint-scss": "^3.5.4"
+    },
+    "dependencies": {
+        "json-server": "^0.17.0"
     }
 }
