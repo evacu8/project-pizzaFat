@@ -28,8 +28,9 @@
         "no-console": [
             "off"
         ]
+    },
+    "globals": {
+      "Handlebars": false,
+      "dataSource": false
     }
-    // "globals": {
-    //   "Handlebars": false
-    // }
 }
