@@ -13,8 +13,8 @@ class Product{
     thisProduct.initOrderForm();
     thisProduct.initAmountWidget();
     thisProduct.processOrder();
-    thisProduct.prepareCartProduct();
-    thisProduct.prepareCartProductParams();
+    // thisProduct.prepareCartProduct();
+    // thisProduct.prepareCartProductParams();
   }
   renderInMenu(){
     const thisProduct = this;
@@ -122,6 +122,7 @@ class Product{
     // update calculated price in the HTML and object
     
     thisProduct.priceElem.innerHTML = price;
+    thisProduct.price = price;
   }
   initAmountWidget(){
     const thisProduct = this;
@@ -138,9 +139,12 @@ class Product{
     const event = new CustomEvent('add-to-cart', {
       bubbles: true,
       detail: {
-        product: thisProduct,
+        product: thisProduct.prepareCartProduct(),
       },
     });
+
+    // console.log('originalProduct:', thisProduct);
+    // console.log('cartProduct:', thisProduct.prepareCartProduct());
 
     thisProduct.element.dispatchEvent(event);
   }
