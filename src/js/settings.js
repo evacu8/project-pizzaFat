@@ -91,8 +91,8 @@ export const classNames = {
 export const settings = {
   amountWidget: {
     defaultValue: 1,
-    defaultMin: 0,
-    defaultMax: 10,
+    defaultMin: 1,
+    defaultMax: 9,
   },
   hours: {
     open: 12,

@@ -54,7 +54,7 @@ class Cart{
   add(menuProduct){
     const thisCart = this;
 
-    console.log('adding product', menuProduct);
+    // console.log('adding product', menuProduct);
 
     const generatedHTML = templates.cartProduct(menuProduct);
 

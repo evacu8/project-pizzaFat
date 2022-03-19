@@ -115,7 +115,6 @@ const app = {
     const bookingWidgetElement = document.querySelector(select.containerOf.booking);
 
     const newBooking = new Booking(bookingWidgetElement);
-    console.log(newBooking);
   }
 };
 
