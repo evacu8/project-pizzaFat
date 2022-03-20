@@ -33,20 +33,19 @@ class Booking {
     thisBooking.peopleAmountWidget = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.dom.peopleAmount.addEventListener('updated', function(){
       thisBooking.peopleAmount = thisBooking.peopleAmountWidget.value;
-      console.log('peopleAmount', thisBooking.peopleAmount);
     });
 
     thisBooking.hoursAmountWidget = new AmountWidget(thisBooking.dom.hoursAmount);
     thisBooking.dom.hoursAmount.addEventListener('updated', function(){
       thisBooking.hoursAmount = thisBooking.hoursAmountWidget.value;
-      console.log('hoursAmount', thisBooking.hoursAmount);
     });
 
     thisBooking.datePickerWidget = new DatePicker(thisBooking.dom.datePicker);
     thisBooking.dom.datePicker.addEventListener('updated', function(){
       thisBooking.date = thisBooking.datePickerWidget.value;
-      console.log('date', thisBooking.date);
     });
+
+    thisBooking.hourPickerWidget = new HourPicker(thisBooking.dom.hourPicker);
   }
 
 }
