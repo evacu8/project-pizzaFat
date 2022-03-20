@@ -114,6 +114,7 @@ const app = {
   initBooking: function(){
     const bookingWidgetElement = document.querySelector(select.containerOf.booking);
 
+    // eslint-disable-next-line no-unused-vars
     const newBooking = new Booking(bookingWidgetElement);
   }
 };
