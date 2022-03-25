@@ -104,8 +104,6 @@ class Booking {
         endDateParam,
       ],
     };
-
-    // console.log('getData params', params);
     
     const urls = {
       bookings:      settings.db.url + '/' + settings.db.bookings 
@@ -115,8 +113,6 @@ class Booking {
       eventsRepeat:  settings.db.url + '/' + settings.db.events   
                                      + '?' + params.eventsRepeat.join('&'),
     };
-
-    // console.log('getData urls', urls);
 
     Promise.all([
       fetch(urls.bookings),
@@ -134,10 +130,6 @@ class Booking {
         ]);
       })
       .then(function([bookings, eventsCurrent, eventsRepeat]){
-        // console.log(bookings);
-        // console.log(eventsCurrent);
-        // console.log(eventsRepeat);
-
         thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
       });
 
@@ -180,12 +172,11 @@ class Booking {
     const startHour = utils.hourToNumber(hour);
 
     for(let hourBlock = startHour; hourBlock < startHour + duration; hourBlock +=0.5){
-      // console.log('loop', hourBlock);
 
       if(typeof thisBooking.booked[date][hourBlock] == 'undefined'){
         thisBooking.booked[date][hourBlock] = [];
       }
-
+      
       thisBooking.booked[date][hourBlock].push(table);
 
     }
@@ -249,7 +240,6 @@ class Booking {
         alert('This table is already booked');
       }
     }
-    console.log('selectedTable', thisBooking.selectedTable);
   }
 
   sendBooking(){
@@ -268,8 +258,6 @@ class Booking {
       address: thisBooking.dom.address.value
     };
 
-    thisBooking.makeBooked(payload.date, payload.hour, payload.duration, payload.table); 
-
     const options = { 
       method: 'POST',
       headers: {
@@ -283,9 +271,20 @@ class Booking {
         return response.json();
       }).then(function(parsedResponse){
         console.log('parsedResponse', parsedResponse);
+      }).then(function(){
+        if(payload.table > 0){
+          thisBooking.makeBooked(payload.date, payload.hour, payload.duration, payload.table); 
+        }else{
+          alert('Please select table.');
+        }
+      }).then(function(){
+        thisBooking.updateDOM();
+        console.log('thisBooking.booked:', thisBooking.booked);
       });
 
-    thisBooking.updateDOM();
+    
+    
+    
   
   }
 
