@@ -7,6 +7,7 @@ import HourPicker from './HourPicker.js';
 class Booking {
   constructor(element){
     const thisBooking = this;
+    thisBooking.selectedTable = {};
 
     thisBooking.render(element);
     thisBooking.initWidgets();
@@ -29,6 +30,8 @@ class Booking {
     thisBooking.dom.hourPicker = element.querySelector(select.widgets.hourPicker.wrapper);
   
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+
+    thisBooking.dom.allTables = thisBooking.dom.wrapper.querySelector(select.containerOf.tables);
   
   }
 
@@ -50,6 +53,10 @@ class Booking {
   
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDOM();
+    });
+
+    thisBooking.dom.allTables.addEventListener('click', function(event){
+      thisBooking.initTables(event);
     });
   }
 
@@ -170,11 +177,6 @@ class Booking {
 
     let allAvailable = false;
 
-    // const tables = thisBooking.element.querySelectorAll(select.booking.tables);
-    // for(let table of tables ){
-    //   table.classList.remove(classNames.booking.tableClicked);
-    // }
-
     if(
       typeof thisBooking.booked[thisBooking.date] == 'undefined'
       ||
@@ -184,6 +186,9 @@ class Booking {
     }
 
     for(let table of thisBooking.dom.tables){
+      table.classList.remove(classNames.booking.tableSelected);
+      thisBooking.selectedTable = '';
+      
       let tableId = table.getAttribute(settings.booking.tableIdAttribute);
       if(!isNaN(tableId)){
         tableId = parseInt(tableId);
@@ -201,7 +206,29 @@ class Booking {
     }
   }
 
+  initTables(event){
+    const thisBooking = this;
 
+    const target = event.target;
+    if(target.classList.contains(select.booking.table)){
+      if(!target.classList.contains(classNames.booking.tableBooked)){
+        if(!target.classList.contains(classNames.booking.tableSelected)){
+          for (let table of thisBooking.dom.tables){
+            table.classList.remove(classNames.booking.tableSelected);
+          }
+          target.classList.add(classNames.booking.tableSelected);
+          const selectedTableId = target.getAttribute('data-table');
+          thisBooking.selectedTable = selectedTableId;
+        } else if(target.classList.contains(classNames.booking.tableSelected)){
+          target.classList.remove(classNames.booking.tableSelected);
+          thisBooking.selectedTable = '';
+        }
+      } else {
+        alert('This table is already booked');
+      }
+    }
+    console.log('selectedTable', thisBooking.selectedTable);
+  }
 
 }
 
