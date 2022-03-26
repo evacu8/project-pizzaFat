@@ -1,4 +1,5 @@
 import { templates } from '../settings.js';
+import Carousel from './Carousel.js';
 
 class Home{
   constructor(element){
@@ -20,7 +21,9 @@ class Home{
   }
 
   initWidgets(){
+    const thisHome = this;
 
+    thisHome.carouselWidget = new Carousel();
   }
 }
 
