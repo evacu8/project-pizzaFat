@@ -1,4 +1,4 @@
-import { templates } from '../settings.js';
+import { select, templates } from '../settings.js';
 import Carousel from './Carousel.js';
 
 class Home{
@@ -23,7 +23,8 @@ class Home{
   initWidgets(){
     const thisHome = this;
 
-    thisHome.carouselWidget = new Carousel();
+    thisHome.dom.carouselWrapper = document.querySelector(select.containerOf.carousel);
+    thisHome.carouselWidget = new Carousel(thisHome.dom.carouselWrapper);
   }
 }
 

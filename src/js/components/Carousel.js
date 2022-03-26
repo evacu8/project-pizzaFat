@@ -3,24 +3,31 @@
 import { select } from '../settings.js';
 
 class Carousel {
-  constructor(){
+  constructor(element){
     const thisCarousel = this;
+    thisCarousel.element = element;
 
-    thisCarousel.render();
+    thisCarousel.render(element);
     thisCarousel.initPlugin();
   }
 
-  render(){
+  render(element){
+    const thisCarousel = this;
 
+    console.log(thisCarousel.element);
   }
 
   initPlugin(){
+    const thisCarousel = this;
 
-    const flkty = new Flickity( select.containerOf.carousel, {
-      // options
+    const options = {
       cellAlign: 'left',
-      contain: true
-    });
+      contain: true,
+      autoPlay: true,
+      wrapAround: true,
+    };
+
+    const flkty = new Flickity( thisCarousel.element, options );
 
   }
 }
