@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-import { select } from '../settings.js';
 
 class Carousel {
   constructor(element){

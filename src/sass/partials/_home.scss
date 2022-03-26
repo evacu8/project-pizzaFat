@@ -1,3 +1,59 @@
+.home-wrapper{
+    background: $color-light;
+    margin-top: 40px;
+}
+
+.boxes {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 50px auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.feature-box {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: $color-light;
+    border-radius: 5px;
+    .card-image{
+        width: 100%;
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100px;
+            vertical-align: middle;
+        }
+    }
+    .card-body{
+        position: absolute;
+    }
+}
+
+.order-box {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.book-box {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.hours-box {
+    background-color: $color-main;
+}
+
 .carousel-cell {
     width: 100%; /* full width */
     height: 350px; /* height of carousel */
