@@ -3,6 +3,7 @@ export const select = {
     menuProduct: '#template-menu-product',
     cartProduct: '#template-cart-product',
     bookingWidget: '#template-booking-widget',
+    homePage: '#template-home-page',
   },
   containerOf: {
     menu: '#product-list',
@@ -11,6 +12,7 @@ export const select = {
     booking: '.booking-wrapper',
     tables: '.floor-plan',
     starters: '.booking-option-title',
+    home: '.home-wrapper',
   },
   all: {
     menuProducts: '#product-list > .product',

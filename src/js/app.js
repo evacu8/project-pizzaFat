@@ -2,6 +2,7 @@ import { settings, select, classNames} from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
+import Home from './components/Home.js';
 
 const app = {
   initPages: function(){
@@ -97,7 +98,8 @@ const app = {
     thisApp.initData();
     thisApp.initMenu();
     thisApp.initCart();
-    this.initBooking();
+    thisApp.initBooking();
+    thisApp.initHome();
   },
   initCart: function(){
     const thisApp = this;
@@ -116,6 +118,13 @@ const app = {
 
     // eslint-disable-next-line no-unused-vars
     const newBooking = new Booking(bookingWidgetElement);
+  },
+  initHome: function(){
+    const thisApp = this;
+
+    const homeElement = document.querySelector(select.containerOf.home);
+
+    thisApp.home = new Home(homeElement);
   }
 };
 
