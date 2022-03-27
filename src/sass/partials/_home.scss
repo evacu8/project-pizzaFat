@@ -73,6 +73,7 @@
     transform: translateY(-20px);
     visibility: visible;
   }
+
   h2{
     transform: translateY(-20px);
   }
@@ -93,6 +94,7 @@
   h2, p{
     margin: 0 auto;
   }
+
   &:hover{
     transform: none;
   }
@@ -154,8 +156,10 @@
 .image-container:hover {
   .icons {
     visibility: visible;
-    transform: scale(2);  
+    transform: scale(2);
+
   }
+  
   &::after {
     opacity: 0.4;
   }
