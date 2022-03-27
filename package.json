@@ -51,5 +51,8 @@
     "dependencies": {
         "json-server": "^0.17.0",
         "rangeslider-pure": "^0.4.11"
+    },
+    "engines": {
+        "node": "17.0.0"
     }
-}
+      }
