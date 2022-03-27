@@ -18,6 +18,11 @@
   flex-wrap: nowrap;
   flex-direction: row;
   justify-content: space-between;
+
+  a {
+    flex: 1 1 auto;
+    max-width: 50%;
+  }
 }
 
 .feature-box {
@@ -42,6 +47,7 @@
       height: 100px;
       vertical-align: middle;
       border-radius: 5px;
+
     }
   }
 
@@ -74,14 +80,10 @@
 }
 
 .order-box{
-  flex: 1 1 auto;
-  max-width: 50%;
   margin-right: 3px;
 }
 
 .book-box{
-  flex: 1 1 auto;
-  max-width: 50%;
   margin-left: 3px;
 }
 
