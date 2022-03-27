@@ -249,23 +249,21 @@
   </script>
 
   <script id="template-home-page" type="text/x-handlebars-template">
-    <div class="container home-wrapper"></div>
+    <div class="container">
       <div class="boxes">
         <div class="row">
-          <div class="feature-box order-box action-box">
+          <div class="feature-box action-box order-box">
             <div class="card-image">
-              <a href="#order"></a>
-                <img src="./assets/pizza-1.jpg" alt="pizza-1">
-              </a>
+              <a href="#order"><img src="./assets/pizza-1.jpg" alt="pizza-1"></a>
             </div>
             <div class="card-body">
               <h2>Order online</h2>
               <p>Delicious food delivered to your door</p>  
             </div>
           </div>
-          <div class="feature-box book-box action-box">
+          <div class="feature-box action-box book-box">
             <div class="card-image">
-              <img src="./assets/pizza-2.jpg" alt="pizza-2">
+              <a href="#booking"><img src="./assets/pizza-2.jpg" alt="pizza-2"></a>
             </div>
             <div class="card-body">
               <h2>Book a table</h2>
@@ -344,6 +342,7 @@
           </div>
         </div>
       </div>
+    </div>
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>

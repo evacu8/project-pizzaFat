@@ -17,6 +17,7 @@
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .feature-box {
@@ -30,7 +31,6 @@
   flex-direction: column;
   color: $color-light;
   border-radius: 5px;
-  margin: 3px auto;
   text-transform: uppercase;
 
   .card-image{
@@ -87,6 +87,7 @@
 
 .hours-box{
   background-color: $color-main;
+  margin-top: 6px;
 
   h2, p{
     margin: 0 auto;
@@ -94,10 +95,4 @@
   &:hover{
     transform: none;
   }
-}
-
-.carousel-cell {
-  width: 100%; /* full width */
-  height: 350px; /* height of carousel */
-  margin-right: 10px;
 }

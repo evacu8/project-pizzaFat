@@ -1,4 +1,5 @@
-import { select, templates } from '../settings.js';
+import { select, templates} from '../settings.js';
+import utils from '../utils.js';
 import Carousel from './Carousel.js';
 
 class Home{
@@ -12,18 +13,20 @@ class Home{
     const thisHome = this;
 
     const generatedHTML = templates.homePage();
+    thisHome.element = utils.createDOMFromHTML(generatedHTML);
+    const homeContainer = document.querySelector(select.containerOf.home);
+    homeContainer.appendChild(thisHome.element);
+
     thisHome.dom = {};
 
     thisHome.dom.wrapper = element;
-    thisHome.dom.wrapper.innerHTML = generatedHTML;
-    // console.log(thisHome.dom.wrapper);
-    // console.log(thisHome.dom.wrapper.innerHTML);
+    thisHome.dom.carouselWrapper = document.querySelector(select.containerOf.carousel);
+
   }
 
   initWidgets(){
     const thisHome = this;
 
-    thisHome.dom.carouselWrapper = document.querySelector(select.containerOf.carousel);
     thisHome.carouselWidget = new Carousel(thisHome.dom.carouselWrapper);
   }
 }
