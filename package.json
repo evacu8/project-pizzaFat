@@ -53,6 +53,6 @@
         "rangeslider-pure": "^0.4.11"
     },
     "engines": {
-        "node": "17.0.0"
+        "node": ">=0.10.3 <=17"
     }
       }
