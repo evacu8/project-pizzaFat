@@ -24,6 +24,7 @@ class Carousel {
       contain: true,
       autoPlay: true,
       wrapAround: true,
+      prevNextButtons: false,
     };
 
     const flkty = new Flickity( thisCarousel.element, options );

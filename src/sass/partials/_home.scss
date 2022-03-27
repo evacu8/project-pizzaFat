@@ -1,61 +1,103 @@
 .home-wrapper{
-    background: $color-light;
-    margin-top: 40px;
+  background: $color-light;
+  margin-top: 40px;
 }
 
 .boxes {
-    display: flex;
-    text-align: center;
-    justify-content: space-between;
-    flex-direction: column;
-    margin: 50px auto;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 40px auto;
+  font-family: $font-header;
+  padding-top: 60px;
 }
 
 .row {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
 }
 
 .feature-box {
-    height: 100px;
+  position: relative;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  color: $color-light;
+  border-radius: 5px;
+  margin: 3px auto;
+  text-transform: uppercase;
+
+  .card-image{
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: $color-light;
-    border-radius: 5px;
-    .card-image{
-        width: 100%;
-        img {
-            object-fit: cover;
-            width: 100%;
-            height: 100px;
-            vertical-align: middle;
-        }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100px;
+      vertical-align: middle;
+      border-radius: 5px;
     }
-    .card-body{
-        position: absolute;
-    }
+  }
+
+  .card-body{
+    position: absolute;
+    top: 15px;
+  }
 }
 
-.order-box {
-    flex: 0 0 50%;
-    max-width: 50%;
+.action-box{
+  p{
+    visibility: hidden;
+    transition: $transition;
+    text-transform: capitalize;
+  }
+
+  h2{
+    transition: $transition;
+  }
 }
 
-.book-box {
-    flex: 0 0 50%;
-    max-width: 50%;
+.action-box:hover{
+  p{
+    transform: translateY(-20px);
+    visibility: visible;
+  }
+  h2{
+    transform: translateY(-20px);
+  }
 }
 
-.hours-box {
-    background-color: $color-main;
+.order-box{
+  flex: 1 1 auto;
+  max-width: 50%;
+  margin-right: 3px;
+}
+
+.book-box{
+  flex: 1 1 auto;
+  max-width: 50%;
+  margin-left: 3px;
+}
+
+.hours-box{
+  background-color: $color-main;
+
+  h2, p{
+    margin: 0 auto;
+  }
+  &:hover{
+    transform: none;
+  }
 }
 
 .carousel-cell {
-    width: 100%; /* full width */
-    height: 350px; /* height of carousel */
-    margin-right: 10px;
-  }
+  width: 100%; /* full width */
+  height: 350px; /* height of carousel */
+  margin-right: 10px;
+}

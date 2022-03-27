@@ -1,0 +1,33 @@
+.main-carousel{
+  height: 220px;
+}
+
+.carousel-cell{
+  display: flex;
+  height: 100%;
+}
+
+.carousel-image{
+  flex: 1;
+  height: 100%;
+
+  img{
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+    vertical-align: middle;
+  }
+}
+
+.carousel-body{
+  flex: 2;
+  padding-left: 30px;
+  
+  h3{
+    text-transform: uppercase;
+  }
+
+  .author{
+    font-style: italic;
+  }
+}
